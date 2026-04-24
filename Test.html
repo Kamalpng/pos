@@ -1,2 +1,373 @@
 <!DOCTYPE html>
-this is my first line
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vertex Trading Solutions</title>
+  <style>
+    :root {
+      --bg: #071d2c;
+      --surface: #102937;
+      --accent: #0fb3c8;
+      --text: #f5f9fc;
+      --muted: #9fb7c2;
+      --border: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, rgba(15, 179, 200, 0.18), transparent 32%),
+                  linear-gradient(180deg, #071d2c 0%, #091f2f 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      padding: 24px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: rgba(7, 29, 44, 0.88);
+      backdrop-filter: blur(18px);
+      z-index: 10;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    nav a {
+      font-size: 0.95rem;
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      display: grid;
+      gap: 28px;
+      padding: 96px 32px 64px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .hero__content {
+      max-width: 640px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      margin: 0.75rem 0 0;
+      font-size: clamp(3rem, 5vw, 4.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    p.lead {
+      margin: 24px 0 0;
+      max-width: 36rem;
+      line-height: 1.85;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .button,
+    .button--secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: none;
+      padding: 16px 28px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button {
+      background: var(--accent);
+      color: #071d2c;
+      box-shadow: 0 18px 35px rgba(15, 179, 200, 0.18);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 42px rgba(15, 179, 200, 0.25);
+    }
+
+    .button--secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+      border-radius: 32px;
+      min-height: 420px;
+      background: linear-gradient(135deg, rgba(15, 179, 200, 0.2), rgba(255, 255, 255, 0.05));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: grid;
+      place-items: center;
+    }
+
+    .hero-visual::after {
+      content: "Global trading intelligence for every market.";
+      position: absolute;
+      inset: auto 24px 24px;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      text-align: right;
+    }
+
+    .hero-visual img {
+      width: min(100%, 560px);
+      filter: drop-shadow(0 16px 40px rgba(0,0,0,.28));
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 32px 72px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .features {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      margin-top: 36px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 28px;
+      min-height: 200px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin: 12px 0 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .section-title span {
+      display: inline-block;
+      width: 42px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 1.7rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .stat {
+      padding: 24px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .footer {
+      padding: 40px 32px;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 860px) {
+      header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+      }
+
+      .hero {
+        padding-top: 72px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 64px 20px 40px;
+      }
+
+      .hero-visual::after {
+        inset: auto 18px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Vertex Trading</div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#insights">Insights</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero__content">
+      <div class="eyebrow">Trading & Risk Management</div>
+      <h1>Delivering market access, insight, and execution for global trading teams.</h1>
+      <p class="lead">Vertex Trading empowers businesses with optimized liquidity, real-time analytics, and proven strategies across equities, commodities, FX, and derivatives.</p>
+      <div class="hero-actions">
+        <a class="button" href="#contact">Request a consultation</a>
+        <a class="button button--secondary" href="#services">Explore services</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80" alt="Trading analytics dashboard" loading="lazy">
+    </div>
+  </section>
+
+  <main>
+    <section id="services" class="grid features">
+      <div class="card">
+        <h3>Institutional trading</h3>
+        <p>Access tailored execution across global markets with deep liquidity, advanced routing, and compliance-ready reporting for institutions and asset managers.</p>
+      </div>
+      <div class="card">
+        <h3>Market intelligence</h3>
+        <p>Turn data into decisions with custom research, fast-moving market signals, and actionable risk insights that keep your desk ahead.</p>
+      </div>
+      <div class="card">
+        <h3>Risk solutions</h3>
+        <p>Protect capital and improve returns with hedging strategies, volatility management, and regulatory support built for trading at scale.</p>
+      </div>
+    </section>
+
+    <section id="solutions" style="margin-top: 64px;">
+      <div class="section-title">
+        <span></span>
+        <h2>Trusted by traders, brokers, and funds</h2>
+      </div>
+      <p style="max-width: 760px; color: var(--muted); line-height: 1.9;">Vertex Trading delivers transparent execution, disciplined market access, and dedicated relationship support for clients seeking reliable performance across volatile markets.</p>
+
+      <div class="stats">
+        <div class="stat">
+          <strong>25+</strong>
+          Years of market experience
+        </div>
+        <div class="stat">
+          <strong>45+</strong>
+          Markets covered globally
+        </div>
+        <div class="stat">
+          <strong>$18B</strong>
+          Monthly executed volume
+        </div>
+      </div>
+    </section>
+
+    <section id="insights" style="margin-top: 64px; display: grid; gap: 24px;">
+      <div class="section-title">
+        <span></span>
+        <h2>How we help your business grow</h2>
+      </div>
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="card">
+          <h3>Execution excellence</h3>
+          <p>Seamless trade workflows, automated algorithms, and connectivity to major exchanges ensure fast, reliable order handling.</p>
+        </div>
+        <div class="card">
+          <h3>Strategic partnerships</h3>
+          <p>Work with a dedicated desk, custom market research, and solutions that align with your capital goals and compliance obligations.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="footer">
+    <p><strong>Vertex Trading Solutions</strong></p>
+    <p>Global market access · Intelligent execution · Risk-aware strategies</p>
+    <p>Contact us: <a href="mailto:info@vertextrading.com">info@vertextrading.com</a></p>
+  </footer>
+</body>
+</html>
